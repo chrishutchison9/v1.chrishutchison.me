@@ -29,7 +29,7 @@ gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
 // Build/production tasks
-gulp.task("build", ["sass", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, hugoArgsDefault, "production"));
+gulp.task("build", ["sass", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, defaultArgs, "production"));
 gulp.task("build-preview", ["sass", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
 
