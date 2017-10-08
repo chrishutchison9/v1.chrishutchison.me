@@ -1,4 +1,5 @@
 baseurl = "/"
+<<<<<<< HEAD
 builddrafts         = false
 canonifyurls        = true
 contentdir          = "content"
@@ -68,3 +69,13 @@ avatar                 = "img/profile.png" # path to image in static dir e.g img
 # The following are DEPRECATED.
 gatracker              = "XYZ" # use googleAnalytics instead
 initials               = "ad"  # displayed on single post page; deprecated in v0.3.0.
+=======
+languageCode = "en-us"
+languageLang = "en"
+title = "My new Victor-Hugo site"
+
+# RSS, categories and tags disabled for an easy start
+# See configuration options for more details: 
+# https://gohugo.io/getting-started/configuration/#toml-configuration
+disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+>>>>>>> feadf57a427c885e8bfb6044495359a7ef5e1e26
