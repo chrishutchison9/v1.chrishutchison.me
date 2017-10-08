@@ -1,3 +1,6 @@
+// window.disqus_developer = 1;
+
+
 // JS Goes here - ES6 supported
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on("init", user => {
