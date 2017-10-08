@@ -73,9 +73,6 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('sass:watch', function () {
-  gulp.watch('./site/dev/scss/*.scss', ['sass']);
-});
 
 gulp.task("svg", () => {
   const svgs = gulp
@@ -102,7 +99,7 @@ gulp.task("server", ["hugo", "cms-assets", "js", 'sass', "svg"], () => {
   gulp.watch("./src/js/**/*.js", ["js"]);
   gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
-  gulp.watch("./site/dev/scss/*.scss", ["sass"]);
+  gulp.watch("./site/dev/scss/**/*.scss", ["sass"]);
 
 });
 

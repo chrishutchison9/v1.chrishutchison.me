@@ -244,6 +244,12 @@ section.icons {
             }
         }
     }
+
+    .copyright {
+      font-size:13px;
+      color: $gray;
+
+    }
 }
 
 @media (min-width: $wide-1-breakpoint) {
