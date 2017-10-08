@@ -1,4 +1,5 @@
 import gulp from "gulp";
+import sass from "gulp-sass";
 import {spawn} from "child_process";
 import hugoBin from "hugo-bin";
 import gutil from "gulp-util";
@@ -28,21 +29,22 @@ gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
 // Build/production tasks
-gulp.task("build", ["css", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, [], "production"));
-gulp.task("build-preview", ["css", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
+gulp.task("build", ["sass", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, [], "production"));
+gulp.task("build-preview", ["sass", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
 
 // Compile CSS with PostCSS
-gulp.task("css", () => (
-  gulp.src("./src/css/*.css")
-    .pipe(postcss([
-      cssImport({from: "./src/css/main.css"}),
-      cssnext(),
-      cssnano(),
-    ]))
-    .pipe(gulp.dest("./dist/css"))
-    .pipe(browserSync.stream())
-));
+// gulp.task("css", () => (
+//   gulp.src("./src/css/*.css")
+//     .pipe(postcss([
+//       cssImport({from: "./src/css/main.css"}),
+//       cssnext(),
+//       cssnano(),
+//     ]))
+//     .pipe(gulp.dest("./dist/css"))
+//     .pipe(browserSync.stream())
+// )
+// );
 
 gulp.task("cms-assets", () => (
   gulp.src("./node_modules/netlify-cms/dist/*.{woff,eot,woff2,ttf,svg,png}")
@@ -63,6 +65,18 @@ gulp.task("js", (cb) => {
   });
 });
 
+
+gulp.task('sass', function () {
+  return gulp.src('./site/dev/scss/*.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest("./dist/css"))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./site/dev/scss/*.scss', ['sass']);
+});
+
 gulp.task("svg", () => {
   const svgs = gulp
     .src("site/static/img/icons/*.svg")
@@ -79,16 +93,17 @@ gulp.task("svg", () => {
     .pipe(gulp.dest("site/layouts/partials/"));
 });
 
-gulp.task("server", ["hugo", "css", "cms-assets", "js", "svg"], () => {
+gulp.task("server", ["hugo", "cms-assets", "js", 'sass', "svg"], () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
     }
   });
   gulp.watch("./src/js/**/*.js", ["js"]);
-  gulp.watch("./src/css/**/*.css", ["css"]);
   gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
+  gulp.watch("./site/dev/scss/*.scss", ["sass"]);
+
 });
 
 /**
