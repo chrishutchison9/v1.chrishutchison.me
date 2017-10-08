@@ -2,6 +2,7 @@ baseurl = "/"
 builddrafts         = false
 canonifyurls        = true
 contentdir          = "content"
+DefaultContentLanguage = "en"
 languageCode        = "en-US"
 layoutdir           = "layouts"
 publishdir          = "public"
