@@ -62,8 +62,8 @@ piwik				   = false                         # If true, Piwik integration is enab
 # piwik_url            = "//www.example.com/piwik/"    # URL to your Piwik installation. Must End with a slash
 # piwik_id			   = 2                             # Id of your site in Piwik
 
-avatar                 = "img/profile.png" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
-# gravatar             = ""                # do not use in the same time as avatar
+# avatar                 = "img/profile.png" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
+gravatar             = "608f19702ba943bf5a79f3a60ba81e84"                # do not use in the same time as avatar
 
 # The following are DEPRECATED.
 gatracker              = "XYZ" # use googleAnalytics instead
