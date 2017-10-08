@@ -1,5 +1,6 @@
 import gulp from "gulp";
-import cp from "child_process";
+import {spawn} from "child_process";
+import hugoBin from "hugo-bin";
 import gutil from "gulp-util";
 import postcss from "gulp-postcss";
 import cssImport from "postcss-import";
@@ -14,14 +15,24 @@ import replace from "gulp-replace";
 import cssnano from "cssnano";
 
 const browserSync = BrowserSync.create();
-const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
+// const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
 const defaultArgs = ["-d", "../dist", "-s", "site"];
 
-gulp.task("hugo", (cb) => buildSite(cb));
-gulp.task("hugo-preview", (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture"]));
-gulp.task("build", ["css", "js", "cms-assets", "hugo"]);
-gulp.task("build-preview", ["css", "js", "cms-assets", "hugo-preview"]);
+// Hugo arguments
+const hugoArgsDefault = ["-d", "../dist", "-s", "site", "-v"];
+const hugoArgsPreview = ["--buildDrafts", "--buildFuture"];
 
+// Development tasks
+gulp.task("hugo", (cb) => buildSite(cb));
+
+gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
+
+// Build/production tasks
+gulp.task("build", ["css", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, [], "production"));
+gulp.task("build-preview", ["css", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
+
+
+// Compile CSS with PostCSS
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
     .pipe(postcss([
@@ -80,10 +91,15 @@ gulp.task("server", ["hugo", "css", "cms-assets", "js", "svg"], () => {
   gulp.watch("./site/**/*", ["hugo"]);
 });
 
-function buildSite(cb, options) {
-  const args = options ? defaultArgs.concat(options) : defaultArgs;
+/**
+ * Run hugo and build the site
+ */
+function buildSite(cb, options, environment = "development") {
+  const args = options ? hugoArgsDefault.concat(options) : hugoArgsDefault;
 
-  return cp.spawn(hugoBin, args, {stdio: "inherit"}).on("close", (code) => {
+  process.env.NODE_ENV = environment;
+
+  return spawn(hugoBin, args, {stdio: "inherit"}).on("close", (code) => {
     if (code === 0) {
       browserSync.reload("notify:false");
       cb();
