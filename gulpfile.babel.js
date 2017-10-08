@@ -29,22 +29,21 @@ gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
 // Build/production tasks
-gulp.task("build", ["sass", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, defaultArgs, "production"));
-gulp.task("build-preview", ["sass", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
+gulp.task("build", ["css", "sass", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, defaultArgs, "production"));
+gulp.task("build-preview", ["css", "sass", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
 
-// Compile CSS with PostCSS
-// gulp.task("css", () => (
-//   gulp.src("./src/css/*.css")
-//     .pipe(postcss([
-//       cssImport({from: "./src/css/main.css"}),
-//       cssnext(),
-//       cssnano(),
-//     ]))
-//     .pipe(gulp.dest("./dist/css"))
-//     .pipe(browserSync.stream())
-// )
-// );
+gulp.task("css", () => (
+  gulp.src("./src/css/*.css")
+    .pipe(postcss([
+      cssImport({from: "./src/css/main2.css"}),
+      cssnext(),
+      cssnano(),
+    ]))
+    .pipe(gulp.dest("./dist/css"))
+    .pipe(browserSync.stream())
+)
+);
 
 gulp.task("cms-assets", () => (
   gulp.src("./node_modules/netlify-cms/dist/*.{woff,eot,woff2,ttf,svg,png}")
@@ -99,6 +98,8 @@ gulp.task("server", ["hugo", "cms-assets", "js", 'sass', "svg"], () => {
   gulp.watch("./src/js/**/*.js", ["js"]);
   gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
+  gulp.watch("./src/css/*.css", ["css"]);
+
   gulp.watch("./src/scss/**/*.scss", ["sass"]);
 
 });
