@@ -51,7 +51,7 @@ highlightjs            = true
 # instagram              = "//instagram.com/you"
 lang                   = "en"
 linkedin               = "//linkedin.com/in/chrishutchison88"
-noshowreadtime         = false                         # if true, don't show "<x> minutes read" in posts
+noshowreadtime         = true                         # if true, don't show "<x> minutes read" in posts
 selfintro              = ""                            # appears in the site header when set to a non-empty string
 # twitter                = "//twitter.com/you"
 # mastodon               = "//example.com/@you"
@@ -66,5 +66,5 @@ piwik				   = false                         # If true, Piwik integration is enab
 gravatar             = "608f19702ba943bf5a79f3a60ba81e84"                # do not use in the same time as avatar
 
 # The following are DEPRECATED.
-gatracker              = "XYZ" # use googleAnalytics instead
-initials               = "ad"  # displayed on single post page; deprecated in v0.3.0.
+#gatracker              = "XYZ" # use googleAnalytics instead
+# initials               = "ad"  # displayed on single post page; deprecated in v0.3.0.
