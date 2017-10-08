@@ -67,7 +67,7 @@ gulp.task("js", (cb) => {
 
 
 gulp.task('sass', function () {
-  return gulp.src('./site/dev/scss/*.scss')
+  return gulp.src('./src/scss/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream());
@@ -99,7 +99,7 @@ gulp.task("server", ["hugo", "cms-assets", "js", 'sass', "svg"], () => {
   gulp.watch("./src/js/**/*.js", ["js"]);
   gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
-  gulp.watch("./site/dev/scss/**/*.scss", ["sass"]);
+  gulp.watch("./src/scss/**/*.scss", ["sass"]);
 
 });
 
