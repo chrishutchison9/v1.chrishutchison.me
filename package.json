@@ -45,13 +45,13 @@
     "postcss-import": "^10.0.0",
     "postcss-loader": "^0.9.1",
     "postcss-uncss": "^0.14.0",
-    "react": "15.6.1",
     "uncss": "^0.14.1",
     "url-loader": "^0.5.7",
     "webpack": "3.6.0",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
+    "create-react-class": "^15.6.2",
     "gulp-inject": "^4.2.0",
     "gulp-sass": "^3.1.0",
     "gulp-svgmin": "^1.2.3",
