@@ -20,7 +20,7 @@ const browserSync = BrowserSync.create();
 const defaultArgs = ["-d", "../dist", "-s", "site"];
 
 // Hugo arguments
-const hugoArgsDefault = ["-d", "../dist", "-s", "site", "-v"];
+const hugoArgsDefault = ["-d", "../dist", "-s", "site"];
 const hugoArgsPreview = ["--buildDrafts", "--buildFuture"];
 
 // Development tasks
