@@ -1,5 +1,5 @@
 [build]
-  command = "yarn build"
+  command = "npm rebuild node-sass && yarn build"
   publish = "dist"
 
 [context.deploy-preview]
