@@ -29,7 +29,7 @@ gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
 // Build/production tasks
-gulp.task("build", ["css", "sass", "js", "cms-assets", "hugo"], (cb) => buildSite(cb, defaultArgs, "production"));
+gulp.task("build", ["css", "sass", "js", "hugo"], (cb) => buildSite(cb, defaultArgs, "production"));
 gulp.task("build-preview", ["css", "sass", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
 
@@ -44,11 +44,6 @@ gulp.task("css", () => (
     .pipe(browserSync.stream())
 )
 );
-
-gulp.task("cms-assets", () => (
-  gulp.src("./node_modules/netlify-cms/dist/*.{woff,eot,woff2,ttf,svg,png}")
-    .pipe(gulp.dest("./dist/css"))
-))
 
 gulp.task("js", (cb) => {
   const myConfig = Object.assign({}, webpackConfig);
@@ -89,14 +84,13 @@ gulp.task("svg", () => {
     .pipe(gulp.dest("site/layouts/partials/"));
 });
 
-gulp.task("server", ["hugo", "cms-assets", "js", 'sass', "svg"], () => {
+gulp.task("server", ["hugo", "js", 'sass', "svg"], () => {
   browserSync.init({
     server: {
       baseDir: "./dist"
     }
   });
   gulp.watch("./src/js/**/*.js", ["js"]);
-  gulp.watch("./site/static/img/icons/*.svg", ["svg"]);
   gulp.watch("./site/**/*", ["hugo"]);
   gulp.watch("./src/css/*.css", ["css"]);
 
