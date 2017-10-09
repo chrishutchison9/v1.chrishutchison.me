@@ -29,14 +29,13 @@ gulp.task("hugo", (cb) => buildSite(cb));
 gulp.task("hugo-preview", (cb) => buildSite(cb, hugoArgsPreview));
 
 // Build/production tasks
-gulp.task("build", ["css", "sass", "js", "hugo"], (cb) => buildSite(cb, defaultArgs, "production"));
+gulp.task("build", ["css", "sass", "js"], (cb) => buildSite(cb, defaultArgs, "production"));
 gulp.task("build-preview", ["css", "sass", "js"], (cb) => buildSite(cb, hugoArgsPreview, "production"));
 
 
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
     .pipe(postcss([
-      cssImport({from: "./src/css/main2.css"}),
       cssnext(),
       cssnano(),
     ]))
