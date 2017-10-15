@@ -96,7 +96,7 @@ gulp.task("server", ["hugo", "js", 'sass', "svg"], () => {
   gulp.watch("./site/**/*", ["hugo"]);
   gulp.watch("./src/css/*.css", ["css"]);
 
-  gulp.watch("./src/scss/*.scss", ["sass"]);
+  gulp.watch("./src/scss/*/*.scss", ["sass"]);
 
 });
 
