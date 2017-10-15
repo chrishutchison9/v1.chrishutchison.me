@@ -6,7 +6,7 @@
     color: $gray !important;
 }
 
-@mixin light {
+@mixin light() {
     color: $gray !important;
 }
 

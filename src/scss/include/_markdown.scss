@@ -3,12 +3,12 @@ section.main .content {
 
 $background-gray: #f7f7f7;
 
-// 
+//
 // Heading
-// 
+//
 
 h1, h2, h3, h4, h5, h6 {
-    @include heading();
+    @include heading;
     text-transform: none;
     margin-top: 1.75rem;
 }
@@ -34,9 +34,9 @@ h4, h5, h6 {
     letter-spacing: none;
 }
 
-// 
+//
 // Code
-// 
+//
 
 code, pre {
     font-family: $monospace-font-stack;
@@ -76,9 +76,9 @@ a code {
     }
 }
 
-// 
+//
 // Body text
-// 
+//
 
 
 p {

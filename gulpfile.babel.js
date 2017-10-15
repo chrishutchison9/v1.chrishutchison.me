@@ -14,6 +14,7 @@ import svgmin from "gulp-svgmin";
 import inject from "gulp-inject";
 import replace from "gulp-replace";
 import cssnano from "cssnano";
+var sourcemaps = require('gulp-sourcemaps');
 
 const browserSync = BrowserSync.create();
 // const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
@@ -60,8 +61,10 @@ gulp.task("js", (cb) => {
 
 
 gulp.task('sass', function () {
-  return gulp.src('./src/scss/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
+  return gulp.src('./src/scss/**/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream());
 });
