@@ -1,5 +1,5 @@
 ---
-title: Visual Studio Code as a lightweight Vue IDE
+title: Visual Studio Code and Atom as lightweight Vue editors
 date: 2017-10-14T04:06:39.357Z
 ---
 I'm really digging [Visual Studio Code](https://code.visualstudio.com/) as a lightweight Vue editor. I love PHPStorm but it was becoming a memory hog on my Ubuntu System. The default color scheme looks great as well. Check it out!
