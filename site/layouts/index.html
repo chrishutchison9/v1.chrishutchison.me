@@ -7,6 +7,10 @@
                     {{ .Content }}
                 </div>
             {{ end }}
+
+
+            
+
             {{ $totalpostscount := len (where .Data.Pages "Section" "blog") }}
             {{ $latestpostscount := .Site.Params.latestpostscount | default $totalpostscount }}
             {{ if gt $latestpostscount 0 }}

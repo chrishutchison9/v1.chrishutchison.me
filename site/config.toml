@@ -23,17 +23,6 @@ weight                 = -120
 identifier             = "blog"
 url                    = "/blog/"
 
-[[menu.main]]
-name                   = "About"
-weight                 = -110
-identifier             = "about"
-url                    = "/about/"
-
-[[menu.main]]
-name                   = "Code"
-weight                 = -100
-identifier             = "code"
-url                    = "/code/"
 
 [params]
 latestpostscount       = 5                             # how many posts to display on the home page
