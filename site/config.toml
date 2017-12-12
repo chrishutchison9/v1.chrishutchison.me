@@ -11,7 +11,7 @@ title               = "Chris Hutchison"
 pygmentsuseclasses  = true
 disqusShortname = "chrishutchison"
 pluralizelisttitles = false
-googleAnalytics     = "UA-123-45"
+googleAnalytics     = "UA-47131712-1"
 disableKinds = ["taxonomy","taxonomyTerm"]
 
 [permalinks]
