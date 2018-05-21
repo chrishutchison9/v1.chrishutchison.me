@@ -23,6 +23,12 @@ weight                 = -120
 identifier             = "blog"
 url                    = "/blog/"
 
+[[menu.main]]
+name                   = "Resume"
+weight                 = -120
+identifier             = "resume"
+url                    = "/resume.pdf"
+
 
 [params]
 latestpostscount       = 5                             # how many posts to display on the home page
