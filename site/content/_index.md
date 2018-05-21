@@ -1,5 +1,5 @@
 +++
-title = "Home"
+title = "Chris Hutchison - Atlanta Web Developer"
 +++
 
 **Featured Project**
